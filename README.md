@@ -15,8 +15,8 @@ Logging: Utilizes Morgan for logging HTTP requests, helping you debug and monito
 
 ### Clone the repository:
 
-`git clone https://github.com/yourusername/express-js-pdf-starter-template.git `
-`cd express-js-pdf-starter-template`
+````git clone https://github.com/yourusername/express-js-pdf-starter-template.git
+cd express-js-pdf-starter-template ```
 
 ### Install dependencies:
 
@@ -29,7 +29,8 @@ Your application will be running on `http://localhost:3000/api/pdf/generate.`
 
 ## 📦 Project Structure
 
-```
+````
+
 /express-js-pdf-starter-template
 ├── /src
 │ ├── /controllers # PDF generation logic
@@ -43,6 +44,7 @@ Your application will be running on `http://localhost:3000/api/pdf/generate.`
 ├── Dockerfile # Docker configuration
 ├── package.json # Project dependencies and scripts
 └── README.md # Project documentation
+
 ```
 
 ## 🛠️ Technologies Used
@@ -61,3 +63,4 @@ We welcome contributions! If you'd like to enhance the functionality or improve 
 ## 📄 License
 
 This project is licensed under the MIT License. See the LICENSE file for more information.
+```
