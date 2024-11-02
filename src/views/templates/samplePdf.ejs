@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <style>
+      /* Global Styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+      .container {
+        width: 80%;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+      }
+      /* Header */
+      .invoice-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #333;
+      }
+      .invoice-header h1 {
+        font-size: 24px;
+        margin: 0;
+      }
+      .invoice-header .invoice-info {
+        text-align: right;
+      }
+      /* Company and Customer Info */
+      .company-info,
+      .customer-info {
+        margin-top: 20px;
+        line-height: 1.6;
+      }
+      /* Invoice Table */
+      .invoice-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .invoice-table th,
+      .invoice-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+      .invoice-table th {
+        background-color: #f4f4f4;
+      }
+      /* Totals Section */
+      .totals {
+        margin-top: 20px;
+        float: right;
+        width: 50%;
+      }
+      .totals table {
+        width: 100%;
+      }
+      .totals th,
+      .totals td {
+        padding: 10px;
+        text-align: right;
+      }
+      .totals th {
+        background-color: #f4f4f4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Invoice Header -->
+      <div class="invoice-header">
+        <h1>Invoice</h1>
+        <div class="invoice-info">
+          <p><strong>Invoice #:</strong> <%= invoiceNumber %></p>
+          <p><strong>Date:</strong> <%= date %></p>
+        </div>
+      </div>
+
+      <!-- Company Info -->
+      <div class="company-info">
+        <p><strong>Company Name</strong></p>
+        <p>123 Business St.</p>
+        <p>City, ST 12345</p>
+        <p>Email: company@example.com</p>
+        <p>Phone: (555) 555-5555</p>
+      </div>
+
+      <!-- Customer Info -->
+      <div class="customer-info">
+        <p><strong>Bill To:</strong></p>
+        <p><%= customer.name %></p>
+        <p><%= customer.address %></p>
+        <p><%= customer.email %></p>
+      </div>
+
+      <!-- Invoice Items Table -->
+      <table class="invoice-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach((item) => { %>
+          <tr>
+            <td><%= item.description %></td>
+            <td><%= item.quantity %></td>
+            <td>$<%= item.unitPrice.toFixed(2) %></td>
+            <td>$<%= (item.quantity * item.unitPrice).toFixed(2) %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <!-- Totals Section -->
+      <div class="totals">
+        <table>
+          <tr>
+            <th>Subtotal:</th>
+            <td>$<%= subtotal.toFixed(2) %></td>
+          </tr>
+          <tr>
+            <th>Tax (10%):</th>
+            <td>$<%= (subtotal * 0.1).toFixed(2) %></td>
+          </tr>
+          <tr>
+            <th>Total:</th>
+            <td><strong>$<%= (subtotal * 1.1).toFixed(2) %></strong></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
